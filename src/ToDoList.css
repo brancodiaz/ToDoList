@@ -1,0 +1,8 @@
+.List{
+  display:block;
+  border: 1px solid black;
+  /* align-content: flex-start; */
+  height: 500px;
+  width: 450px;
+  text-align: left;
+}
