@@ -2,16 +2,38 @@ h3{
   text-align: center;
   margin: 0px;
   color: #03527D;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-bottom: 1px solid #E7E9EB;
 }
 .list{
-  /* display:flex;
-  flex-direction: column; */
+  display:flex;
+  flex-direction: column;
   border: 1px solid #E7E9EB;
-  height: 350px;
+  max-height: 700px;
+  overflow-y: auto;
   width: 300px;
   text-align: left;
   margin-bottom: 10px;
   background-color: #BAD5E4;
   border-radius: 12px;
   cursor: pointer;
+  /* align-items: center; */
+}
+
+.newItem {
+  margin: 6px 6px 6px 6px;
+  padding: 8px;
+  border-radius: 7px;
+}
+
+.inputNewItem {
+  margin: 5px 5px 5px 5px;
+  padding: 8px;
+  border-radius: 7px;
+  border: 1px solid #E7E9EB;
+}
+
+.newItem:hover {
+  background-color: #E7E9EB;
 }

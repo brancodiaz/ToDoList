@@ -1,7 +1,20 @@
 .item{
-  /* border: 1px solid black; */
-  margin: 2px;
+  border: 1px solid #E7E9EB;
+  margin: 5px 5px 5px 5px;
+  /* margin: 10px; */
+  padding: 8px;
+  background-color: white;
+  border-radius: 7px;
+  /* font-size: larger; */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);;
 }
+
+.marked{
+  text-decoration: line-through;
+}
+
 .item:hover {
   background-color: #E7E9EB;
+  border: 1px solid #0673AE;
+  font-weight: bold;
 }

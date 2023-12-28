@@ -1,20 +1,34 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './ToDoItem.css'
-function ToDoItem({id, description}) {
-  const [isChecked, setIsChecked] = useState(false);
-  // Function to handle checkbox change
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked); // Toggle the checkbox value
-  };
+function ToDoItem({ id, description, itemStyle, onItemClick }) {
 
-    return (
-      <>
-        <p className='item'>
-          <input type="checkbox" id={id} checked={isChecked} onChange={handleCheckboxChange} />
-          {description}
-        </p>
-      </>
-    )
-  }
-  
-  export default ToDoItem
+  // const handleOnClick = async (id) => {
+  //   fetch(`https://localhost:7046/api/ToDo/${id}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     }
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       // Handle the response data as needed
+  //       console.log('Response:', data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error:', error);
+  //     });
+  // };
+
+  return (
+    <>
+      <div id={id} 
+          className={`item ${itemStyle}`} 
+          onClick={onItemClick}
+      >
+        {description}
+      </div>
+    </>
+  )
+}
+
+export default ToDoItem
