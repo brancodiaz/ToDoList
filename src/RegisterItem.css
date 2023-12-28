@@ -1,8 +1,8 @@
 .styled-input {
-  width: 444px;
-  
+  width: 100%;
 }
 
 .RegisterItem{
   margin-bottom: 10px;
+  display: flex;
 }

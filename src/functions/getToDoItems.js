@@ -1,14 +1,9 @@
-const getToDoItems = async () => {
-    const API_URL = 'https://localhost:7046/api/ToDo';
-    try {
-        const response = await fetch(API_URL);
-        const result = await response.json();
-        setData(result);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
-  };
-  
-  export default fetchDataFromApi;
+const TO_DO_ITEMS_LIST = 'https://localhost:7046/api/ToDo'
+
+export const getToDoItems = async() =>
+    {
+        const resp = await fetch(TO_DO_ITEMS_LIST);
+        const data = await resp.json();
+        console.log(data);
+        return data;
+    }

@@ -1,38 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ToDoItem from './ToDoItem';
 import './ToDoList.css'
 
-function ToDoList() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://localhost:7046/api/ToDo');
-        const result = await response.json();
-        setData(result);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+function ToDoList({ items, isLoading, title }) {
   return (
     <>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <div className='List'>
-          {data.map(item => (
+      <div className='list'>
+        <h3>{title}</h3>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          items.map(item => (
             <ToDoItem id={item.id} description={item.description} />
-          ))}
-        </div>
-      )}
+          ))
+        )}
+      </div>
     </>
   );
 }

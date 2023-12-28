@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import './ToDoItem.css'
 function ToDoItem({id, description}) {
   const [isChecked, setIsChecked] = useState(false);
   // Function to handle checkbox change
@@ -9,11 +9,10 @@ function ToDoItem({id, description}) {
 
     return (
       <>
-        <label>
+        <p className='item'>
           <input type="checkbox" id={id} checked={isChecked} onChange={handleCheckboxChange} />
           {description}
-        </label>
-        <br/>
+        </p>
       </>
     )
   }
