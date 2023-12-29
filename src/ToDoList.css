@@ -6,12 +6,11 @@ h3{
   padding-top: 5px;
   border-bottom: 1px solid #E7E9EB;
 }
-.list{
+.listcontainer{
   display:flex;
   flex-direction: column;
   border: 1px solid #E7E9EB;
   max-height: 700px;
-  overflow-y: auto;
   width: 300px;
   text-align: left;
   margin-bottom: 10px;
@@ -19,6 +18,9 @@ h3{
   border-radius: 12px;
   cursor: pointer;
   /* align-items: center; */
+}
+.list{
+  overflow-y: auto;
 }
 
 .newItem {
@@ -36,4 +38,6 @@ h3{
 
 .newItem:hover {
   background-color: #E7E9EB;
+  border: 1px solid #0673AE;
+  padding: 7px;
 }

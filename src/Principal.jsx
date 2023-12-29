@@ -10,6 +10,7 @@ export const Principal = () => {
 
   const [statePending, setStatePending] = useState([]);
   const [stateFinished, setStateFinished] = useState([]);
+  const [newItemId, setNewItemId] = useState(0);
 
   useEffect(() => {
     if (!isLoadingPending) {
@@ -23,13 +24,32 @@ export const Principal = () => {
     }
   }, [isLoadingFinished]);
 
+  useEffect(() => {
+    setNewItemId(newItemId);
+  }, [newItemId]);
+
+  const handleAddNewItem = (newTaskDescription) => {
+    fetch('https://localhost:7046/api/ToDo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ description: newTaskDescription }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Handle the response data as needed
+         console.log('Response:', data);
+        const newItem = {id: data, description: newTaskDescription};
+        setStatePending((prevList) => [...prevList, newItem]);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+
   const handleDivMove = (index, sourceList, destinationList) => {
-    // console.log(sourceList);
-    // console.log(destinationList);
-
     const movedItem = sourceList[index];
-    console.log(movedItem);
-
     // Update the state with the new lists
     if (sourceList === statePending) {
       setStatePending((prevList) => prevList.filter((_, i) => i !== index));
@@ -58,13 +78,12 @@ export const Principal = () => {
   return (
     <div className='ToDoList'>
       <h1>To-Do List</h1>
-      {/* <RegisterItem /> */}
-      {/* <ToDoList isLoading={isLoading} items={items} /> */}
       <TaskListContainer isLoadingPending={isLoadingPending}
         itemsPending={statePending}
         isLoadingFinished={isLoadingFinished}
         itemsFinished={stateFinished}
-        onDivMove={handleDivMove} />
+        onDivMove={handleDivMove}
+        onAddNewItem={handleAddNewItem} />
     </div>
   )
 }
